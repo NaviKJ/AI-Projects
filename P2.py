@@ -85,6 +85,12 @@ all_stars = [list(x) for x in zip(stars, cool_stars, useful_stars, funny_stars)]
 X_train, X_test, y_train, y_test = train_test_split(texts, all_stars, test_size=0.2, random_state=42)
 X_val, X_test, y_val, y_test = train_test_split(X_test, y_test, test_size=0.5, random_state=42)
 
+
+test_data = {'X_test': list(X_test), 'y_test': y_test}
+
+with open('test_data.json', 'w') as f:
+    json.dump(test_data, f)
+
 #Convert text to numerical vectors using Count Vectorization
 vectorizer = CountVectorizer()
 X_train_vectors = vectorizer.fit_transform(X_train)
@@ -152,6 +158,9 @@ def train_and_evaluate(X_train, y_train, X_val, y_val, X_test, y_test):
     test_cr = classification_report(y_test, y_test_pred)
    
     return clf
+
+with open('test_data.json', 'r') as f:
+    test_data = json.load(f)
 
 clf_stars = train_and_evaluate(X_train_stars, [x[0] for x in y_train], X_val_stars, [x[0] for x in y_val], X_test_stars, [x[0] for x in y_test])
 y_pred_stars = clf_stars.predict(X_test_stars)
