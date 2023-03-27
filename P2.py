@@ -189,36 +189,6 @@ print("Test Accuracy:", accuracy_score([x[1] for x in y_test], y_pred_cool))
 print("Test Classification Report:\n", classification_report([x[1] for x in y_test], y_pred_cool))
 
 
-
-clf_stars = train_and_evaluate(X_train_stars, [x[0] for x in y_train], X_val_stars, [x[0] for x in y_val], X_test_stars, [x[0] for x in y_test])
-y_pred_stars = clf_stars.predict(X_test_stars)
-print("Stars:")
-print("Test Accuracy:", accuracy_score([x[0] for x in y_test], y_pred_stars))
-print("Test Classification Report:\n", classification_report([x[0] for x in y_test], y_pred_stars))
-print()
-
-clf_useful = train_and_evaluate(X_train_useful, [x[2] for x in y_train], X_val_useful, [x[2] for x in y_val], X_test_useful, [x[2] for x in y_test])
-y_pred_useful = clf_useful.predict(X_test_useful)
-print("Useful:")
-print("Test Accuracy:", accuracy_score([x[2] for x in y_test], y_pred_useful))
-print("Test Classification Report:\n", classification_report([x[2] for x in y_test], y_pred_useful))
-print()
-
-clf_funny = train_and_evaluate(X_train_funny, [x[3] for x in y_train], X_val_funny, [x[3] for x in y_val], X_test_funny, [x[3] for x in y_test])
-y_pred_funny = clf_funny.predict(X_test_funny)
-print("Funny:")
-print("Test Accuracy:", accuracy_score([x[3] for x in y_test], y_pred_funny))
-print("Test Classification Report:\n", classification_report([x[3] for x in y_test], y_pred_funny))
-print()
-
-clf_cool = train_and_evaluate(X_train_cool, [x[1] for x in y_train], X_val_cool, [x[1] for x in y_val], X_test_cool, [x[1] for x in y_test])
-y_pred_cool = clf_cool.predict(X_test_cool)
-print("Cool:")
-print("Test Accuracy:", accuracy_score([x[1] for x in y_test], y_pred_cool))
-print("Test Classification Report:\n", classification_report([x[1] for x in y_test], y_pred_cool))
-
-
-
 #Save the classifier
 with open('classifier.pkl', 'wb') as f:
  pickle.dump(clf, f)
